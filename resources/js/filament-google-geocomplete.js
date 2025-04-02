@@ -48,6 +48,7 @@ export default function filamentGoogleGeocomplete({
         script.id = "filament-google-maps-google-maps-js";
         window.filamentGoogleMapsAsyncLoad = this.createAutocomplete.bind(this);
         script.src = gmaps + "&callback=filamentGoogleMapsAsyncLoad";
+        script.async = true;
         document.head.appendChild(script);
       } else {
         const waitForGlobal = function (key, callback) {
@@ -126,17 +127,19 @@ export default function filamentGoogleGeocomplete({
           true
         );
 
-        const autocomplete = new google.maps.places.Autocomplete(
-          geoComplete,
-          geocompleteOptions
-        );
+        const placeAutocomplete = new google.maps.places.PlaceAutocompleteElement({
+          input: geoComplete,
+          fields: fields,
+          strictBounds: false,
+          types: types,
+        });
 
-        autocomplete.setComponentRestrictions({
+        placeAutocomplete.setComponentRestrictions({
           country: countries,
         });
 
-        autocomplete.addListener("place_changed", () => {
-          const place = autocomplete.getPlace();
+        placeAutocomplete.addListener("place_changed", () => {
+          const place = placeAutocomplete.getPlace();
 
           if (!place.geometry || !place.geometry.location) {
             window.alert(

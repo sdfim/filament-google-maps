@@ -46,13 +46,12 @@ export default function filamentGoogleMapsField({
     geoJsonDataLayer: null,
 
     loadGMaps: function () {
-      if (
-        !document.getElementById("filament-google-maps-google-maps-entry-js")
-      ) {
+      if (!document.getElementById("filament-google-maps-google-maps-entry-js")) {
         const script = document.createElement("script");
         script.id = "filament-google-maps-google-maps-entry-js";
         window.filamentGoogleMapsAsyncLoad = this.createMap.bind(this);
         script.src = gmaps + "&callback=filamentGoogleMapsAsyncLoad";
+        script.async = true;
         document.head.appendChild(script);
       } else {
         const waitForGlobal = function (key, callback) {
@@ -87,11 +86,10 @@ export default function filamentGoogleMapsField({
         ...controls,
       });
 
-      this.marker = new google.maps.Marker({
+      this.marker = new google.maps.marker.AdvancedMarkerElement({
         map: this.map,
+        position: this.getCoordinates(),
       });
-
-      this.marker.setPosition(this.getCoordinates());
 
       if (layers) {
         this.layers = layers.map((layerUrl) => {
@@ -119,33 +117,6 @@ export default function filamentGoogleMapsField({
           this.geoJsonDataLayer.addGeoJson(JSON.parse(geoJson));
         }
       }
-
-      // if (drawingField) {
-      //   this.dataLayer = new google.maps.Data();
-      //
-      //   let geoJSON = getStateUsing(drawingField);
-      //   geoJSON && this.loadFeaturesCollection(JSON.parse(geoJSON));
-      //
-      //   google.maps.event.addListener(
-      //     this.drawingManager,
-      //     "overlaycomplete",
-      //     (event) => {
-      //       event.overlay.type = event.type;
-      //       event.overlay.id = this.guid();
-      //       event.overlay.feature = this.instanceFeature(event.overlay);
-      //       this.addOverlayEvents(event.overlay);
-      //       this.overlays.push(event.overlay);
-      //
-      //       if (event.type != google.maps.drawing.OverlayType.MARKER) {
-      //         // Switch back to non-drawing mode after drawing a shape.
-      //         this.drawingManager.setDrawingMode(null);
-      //         this.setSelection(event.overlay);
-      //       }
-      //
-      //       this.drawingModified();
-      //     }
-      //   );
-      // }
     },
 
     getCoordinates: function () {

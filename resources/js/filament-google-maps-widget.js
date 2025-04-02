@@ -49,8 +49,8 @@ export default function filamentGoogleMapsWidget({
         const script = document.createElement("script");
         script.id = "filament-google-maps-google-maps-js";
         window.filamentGoogleMapsAsyncLoad = this.createMap.bind(this);
-        script.src =
-          this.config.gmaps + "&callback=filamentGoogleMapsAsyncLoad";
+        script.src = this.config.gmaps + "&callback=filamentGoogleMapsAsyncLoad";
+        script.async = true;
         document.head.appendChild(script);
       } else {
         const waitForGlobal = function (key, callback) {
@@ -158,7 +158,7 @@ export default function filamentGoogleMapsWidget({
       const point = location.location;
       const label = location.label;
 
-      const marker = new google.maps.Marker({
+      const marker = new google.maps.marker.AdvancedMarkerElement({
         position: point,
         title: label,
         model_id: location.id,

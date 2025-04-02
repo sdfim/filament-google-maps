@@ -227,23 +227,19 @@ export default function filamentGoogleMapsField({
             true
           );
 
-          const geocompleteOptions = {
+          const placeAutocomplete = new google.maps.places.PlaceAutocompleteElement({
+            input: geoComplete,
             fields: this.placeFields,
             strictBounds: false,
             types: types,
-          };
+          });
 
-          const gAutocomplete = new google.maps.places.Autocomplete(
-            geoComplete,
-            geocompleteOptions
-          );
-
-          gAutocomplete.setComponentRestrictions({
+          placeAutocomplete.setComponentRestrictions({
             country: countries,
           });
 
-          gAutocomplete.addListener("place_changed", () => {
-            const place = gAutocomplete.getPlace();
+          placeAutocomplete.addListener("place_changed", () => {
+            const place = placeAutocomplete.getPlace();
 
             if (!place.geometry || !place.geometry.location) {
               window.alert(
