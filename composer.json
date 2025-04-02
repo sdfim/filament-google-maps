@@ -1,9 +1,9 @@
 {
-    "name": "cheesegrits/filament-google-maps",
+    "name": "sdfim/filament-google-maps",
     "description": "A Google Maps package for Filament PHP with field, column and widget",
     "type": "library",
     "license": "MIT",
-    "homepage": "https://github.com/cheesegrits/filament-google-maps",
+    "homepage": "https://github.com/sdfim/filament-google-maps",
     "require": {
         "php": "^8.0",
         "spatie/laravel-package-tools": "^1.9",
@@ -32,8 +32,8 @@
     },
     "authors": [
         {
-            "name": "Hugh Messenger",
-            "email": "hugh.messenger@gmail.com"
+            "name": "Andrii Messenger",
+            "email": "andrii.messenger@gmail.com"
         }
     ],
     "require-dev": {
