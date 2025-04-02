@@ -1,5 +1,5 @@
 {
-    "name": "sdfim/filament-google-maps",
+    "name": "sdfim/filament-google-maps-fork",
     "description": "A Google Maps package for Filament PHP with field, column and widget",
     "type": "library",
     "license": "MIT",
