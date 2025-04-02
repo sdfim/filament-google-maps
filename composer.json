@@ -18,9 +18,9 @@
     },
     "autoload": {
         "psr-4": {
-            "Cheesegrits\\FilamentGoogleMaps\\": "src/",
-            "Cheesegrits\\FilamentGoogleMaps\\Tests\\": "tests/src",
-            "Cheesegrits\\FilamentGoogleMaps\\Tests\\Database\\Factories\\": "tests/database/factories"
+            "Sdfim\\FilamentGoogleMaps\\": "src/",
+            "Sdfim\\FilamentGoogleMaps\\Tests\\": "tests/src",
+            "Sdfim\\FilamentGoogleMaps\\Tests\\Database\\Factories\\": "tests/database/factories"
         }
     },
     "extra": {
